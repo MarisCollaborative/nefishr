@@ -7,9 +7,10 @@
 
 <!-- badges: end -->
 
-The goal of nefishr is to provide a suite of functions that help to
-produce fishery reports, presentations, and other documents for each of
-the different Fishery Management Plans (FMPs).
+The goal of <span style="color: #1d365e;">**nefishr**</span> is to
+provide a suite of functions that help to produce fishery reports,
+presentations, and other documents for each of the different Fishery
+Management Plans (FMPs).
 
 ## Installation
 
@@ -47,5 +48,5 @@ summary(cars)
 
 ## This code is primarily maintained by:
 
-**Angelia Miller** (<amiller@nefmc.org>) New England Fishery Management
-Council Newburyport, MA 01950
+**Angelia Miller** (<amiller@nefmc.org>)</br> New England Fishery
+Management Council</br> Newburyport, MA 01950
