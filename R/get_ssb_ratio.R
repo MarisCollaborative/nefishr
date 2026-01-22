@@ -6,8 +6,15 @@
 #' @param itis A numeric value representing the ITIS Taxon Serial Number 
 #' @param year A numeric value of the assement year of interest 
 #' 
+#'
 #' @importFrom rlang .data
-#' @return a dataframe of SSB ratios of each species 
+#' 
+#' @return a data frame of SSB ratios of each species (n x 4)
+#' \item{stock_id}{NEFSC Stock ID}
+#' \item{stock_name}{Full name of stock}
+#' \item{assessment_year}{Most recent assessment year}
+#' \item{b_bmsy}{Ratio of estimated SSB to SSB_MSY}
+#' 
 #' @export
 #' 
 #' @examples
@@ -20,6 +27,12 @@
 
 
 get_ssb_ratio <- function(species = NULL, itis = NULL, year = NULL){
+  
+    if (is.null(itis) & is.null(species)) {
+    stop("If you do not know the ITIS code then please enter a value for the
+    `species` argument. A character string of any part of the stock name.
+         eg stock = \"cod\", stock = \"Georges Bank\"")
+  }
     # extract stock assessment summary information from stocksmart package
     data <- stocksmart::stockAssessmentSummary |> 
       # clean the names for easier reference

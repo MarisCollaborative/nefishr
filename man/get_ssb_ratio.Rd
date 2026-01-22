@@ -15,6 +15,9 @@ get_ssb_ratio(species = NULL, itis = NULL, year = NULL)
 }
 \value{
 a dataframe of SSB ratios of each species
+\item{StockName}{Full name of stock}
+\item{Jurisdiction}{Management council}
+\item{ITIS}{species itis code}
 }
 \description{
 A function to extract the ratio of the estimated SSB from the most recent stock assessment relative to the estimated SSB at MSY for NEFMC managed species.
