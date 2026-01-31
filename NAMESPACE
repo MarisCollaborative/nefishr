@@ -2,4 +2,5 @@
 
 export(get_assessment_vals)
 export(get_species_code)
+export(setup_keyring_nefmc)
 importFrom(rlang,.data)
