@@ -105,13 +105,14 @@ nefmc_species <- nefmc_species |>
                     FMP == "Atlantic Herring" ~ "JAN-1", 
                     FMP == "Atlantic Deep-Sea Red Crab" ~ "MAR-1",
                     FMP == "Atlantic Salmon" ~ NA),
+
                 END_FY_MONTH = dplyr::case_when(
                     FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "APR-30", 
                     FMP  == "Sea Scallop" ~ "MAR-31", 
                     FMP == "Atlantic Herring" ~ "DEC-31", 
                     FMP == "Atlantic Deep-Sea Red Crab" ~ "FEB-28",
-                    FMP == "Atlantic Salmon" ~ NA
-  ))
+                    FMP == "Atlantic Salmon" ~ NA), 
+                  )
 
 # save an updated copy into the package
 usethis::use_data(nefmc_species, overwrite = TRUE)
