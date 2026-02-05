@@ -93,12 +93,25 @@ species_lookup <- nefmc_species |> # from the nefmc_species table
   # clean up the table by removing all intermediary columns
   dplyr::select(ITIS_TSN, ITIS_NAME, FMP_NAME) 
 
-# add new columns to the nefmc_species table
+# add new columns to the nefmc_species table and create new columns for fishing years
 nefmc_species <- nefmc_species |> 
   # add the FMP_NAME column from the species_lookup table by joining based on the species code and name
   dplyr::left_join(species_lookup, by = c("ITIS_TSN", "ITIS_NAME")) |> 
   # add the stat area and estimation region columns from the statarea_stock table by joining based on the species code and the NE species code 
-  dplyr::left_join(statarea_stock, by = c("ITIS_TSN", "DLR_NESPP3"="NESPP3"))
+  dplyr::left_join(statarea_stock, by = c("ITIS_TSN", "DLR_NESPP3"="NESPP3")) |> 
+  dplyr::mutate(BEGIN_FY_MONTH = dplyr::case_when(
+                    FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "MAY-1", 
+                    FMP  == "Sea Scallop" ~ "APR-1", 
+                    FMP == "Atlantic Herring" ~ "JAN-1", 
+                    FMP == "Atlantic Deep-Sea Red Crab" ~ "MAR-1",
+                    FMP == "Atlantic Salmon" ~ NA),
+                END_FY_MONTH = dplyr::case_when(
+                    FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "APR-30", 
+                    FMP  == "Sea Scallop" ~ "MAR-31", 
+                    FMP == "Atlantic Herring" ~ "DEC-31", 
+                    FMP == "Atlantic Deep-Sea Red Crab" ~ "FEB-28",
+                    FMP == "Atlantic Salmon" ~ NA
+  ))
 
 # save an updated copy into the package
 usethis::use_data(nefmc_species, overwrite = TRUE)
