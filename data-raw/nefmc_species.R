@@ -100,17 +100,17 @@ nefmc_species <- nefmc_species |>
   # add the stat area and estimation region columns from the statarea_stock table by joining based on the species code and the NE species code 
   dplyr::left_join(statarea_stock, by = c("ITIS_TSN", "DLR_NESPP3"="NESPP3")) |> 
   dplyr::mutate(BEGIN_FY_MONTH = dplyr::case_when(
-                    FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "MAY-1", 
-                    FMP  == "Sea Scallop" ~ "APR-1", 
-                    FMP == "Atlantic Herring" ~ "JAN-1", 
-                    FMP == "Atlantic Deep-Sea Red Crab" ~ "MAR-1",
+                    FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "May-1", 
+                    FMP  == "Sea Scallop" ~ "Apr-1", 
+                    FMP == "Atlantic Herring" ~ "Jan-1", 
+                    FMP == "Atlantic Deep-Sea Red Crab" ~ "Mar-1",
                     FMP == "Atlantic Salmon" ~ NA),
 
                 END_FY_MONTH = dplyr::case_when(
-                    FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "APR-30", 
-                    FMP  == "Sea Scallop" ~ "MAR-31", 
-                    FMP == "Atlantic Herring" ~ "DEC-31", 
-                    FMP == "Atlantic Deep-Sea Red Crab" ~ "FEB-28",
+                    FMP %in% c("Northeast Multispecies", "Monkfish", "Spiny Dogfish", "Skates", "Small-Mesh Multispecies") ~ "Apr-30", 
+                    FMP  == "Sea Scallop" ~ "Mar-31", 
+                    FMP == "Atlantic Herring" ~ "Dec-31", 
+                    FMP == "Atlantic Deep-Sea Red Crab" ~ "Feb-28",
                     FMP == "Atlantic Salmon" ~ NA), 
                   )
 
