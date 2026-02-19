@@ -12,7 +12,12 @@ Imports:
     dplyr,
     stocksmart,
     janitor, 
-    rlang
+    rlang, 
+    lubridate, 
+    purrr, 
+    keyring, 
+    stringr, 
+    tidyr
 Remotes: 
     NOAA-EDAB/stocksmart
 Suggests: 

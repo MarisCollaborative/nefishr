@@ -34,20 +34,20 @@ get_species_code <- function(species = NULL){ #}, itis = NULL){
   # if (!is.null(itis)) {
   #   res <- nefmc_species |> 
   #     dplyr::filter(ITIS_TSN == itis) |>
-  #     dplyr::distinct(ITIS_TSN, FMP_NAME, FMP)
+  #     dplyr::distinct(ITIS_TSN, SPECIES_NAME, FMP)
 
   # } else if (!is.null(species)) {
     res <- nefmc_species |> 
       dplyr::filter(grepl(species,
-                          FMP_NAME)) |>
-      dplyr::distinct(ITIS_TSN, FMP_NAME, FMP) |> 
+                          SPECIES_NAME)) |>
+      dplyr::distinct(ITIS_TSN, SPECIES_NAME, FMP) |> 
       dplyr::rename(itis_code = ITIS_TSN,
-                    species = FMP_NAME)
+                    species = SPECIES_NAME)
   # }
 
   # res <- res |> 
   #   dplyr::rename(ITIS = ITIS_TSN,
-  #                 Species = FMP_NAME)
+  #                 Species = SPECIES_NAME)
   
 return(res)
 # return(res$ITIS)
