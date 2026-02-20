@@ -7,10 +7,12 @@
 
 <!-- badges: end -->
 
-The goal of <span style="color: #1d365e;">**nefishr**</span> is to
+The goal of <span style="color: #1d365e;">**nefishr***</span> is to
 provide a suite of functions that help to produce fishery reports,
 presentations, and other documents for each of the different Fishery
 Management Plans (FMPs).
+
+ **This package is in active development, and should be used sparingly.*
 
 ## Installation
 
