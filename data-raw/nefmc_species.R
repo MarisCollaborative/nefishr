@@ -126,17 +126,19 @@ nefmc_species <- nefmc_species |>
                 # the stock name is dependent on the statistical areas or the species estimation region
                 STOCK_NAME = dplyr::case_when(
                   # when rows with Atlantic cod also have areas in this list, the stock name is SNE Atlantic cod
-                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(611, 539, 538, 537, 613, 612, 615, 616, 533, 534) ~ str_c("SNE", SPECIES_NAME, sep = " "), 
+                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(533:534, 537:539, 611:640) ~ str_c("SNE", SPECIES_NAME, sep = " "), 
                   # when rows with Atlantic cod also have areas in this list, the stock name is WGOM Atlantic cod
-                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(513,514,515,521,526,541) ~ str_c("WGOM", SPECIES_NAME, sep = " "), 
+                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(513:515,521,526,541) ~ str_c("WGOM", SPECIES_NAME, sep = " "), 
                   # when rows with Atlantic cod also have areas in this list, the stock name is GB Atlantic cod
-                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(522,525,542,561,562,543,552,551,561,464) ~ str_c("GB", SPECIES_NAME, sep = " "), 
+                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(464,522,525,542:543) ~ str_c("WGB", SPECIES_NAME, sep = " "), 
+                  # when rows with Atlantic cod also have areas in this list, the stock name is GB Atlantic cod
+                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(551:552,561:562) ~ str_c("EGB", SPECIES_NAME, sep = " "), 
                   # when rows with Atlantic cod also have areas in this list, the stock name is EGOM Atlantic cod
-                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(512,465,511) ~ str_c("EGOM", SPECIES_NAME, sep = " "), 
+                  SPECIES_NAME == "Atlantic cod" & AREA %in% c(465:512) ~ str_c("EGOM", SPECIES_NAME, sep = " "), 
                   # when rows with Haddock also have the GOM region, the stock name is GOM Haddock
-                  SPECIES_NAME == "Haddock" & SPECIES_ESTIMATION_REGION == "GOM" ~ str_c(SPECIES_ESTIMATION_REGION, SPECIES_NAME, sep = " "),
-                  # when rows with Haddock also have regions in this list, the stock name is GB Haddock
-                  SPECIES_NAME == "Haddock" & SPECIES_ESTIMATION_REGION %in% c("WGB_SNE", "EGB") ~ str_c("GB", SPECIES_NAME, sep = " "),
+                  SPECIES_NAME == "Haddock" & SPECIES_ESTIMATION_REGION %in% c("GOM", "EGB") ~ str_c(SPECIES_ESTIMATION_REGION, SPECIES_NAME, sep = " "),
+                  # when rows with Haddock also have regions in this list, the stock name is WGB Haddock
+                  SPECIES_NAME == "Haddock" & SPECIES_ESTIMATION_REGION %in% c("WGB_SNE", "MA") ~ str_c("WGB", SPECIES_NAME, sep = " "),
                   # when rows with Windowpane flounder also have the SNEMA region, the stock name is Southern Windowpane flounder
                   SPECIES_NAME == "Windowpane flounder" & SPECIES_ESTIMATION_REGION == "SNEMA" ~ str_c("Southern", SPECIES_NAME, sep = " "), 
                   # when rows with Windowpane flounder also have the GBGOM SNEMA region, the stock name is Northern Windowpane flounder
