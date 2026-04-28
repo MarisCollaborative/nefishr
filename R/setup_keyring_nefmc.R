@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' setup_keyring_nefmc()
 #' }
 setup_keyring_nefmc <- function(delete_keyring = FALSE) {

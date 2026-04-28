@@ -21,3 +21,11 @@ a column in the user provided dataframe that contains values for the fishing yea
 \description{
 Assigns the fishing year in which a trip was recorded for a given species based on the calendar year date and the fishing year intervals for a Fishery Management Plan
 }
+\examples{
+example_data <- structure(list(DATE_TRIP = structure(c(1752170400, 1765172280, 1737851400, 1761525000, 1761525000, 1747497600, 1747497600, 1747584000, 1747584000), class = c("POSIXct", "POSIXt")), YEAR = c(2025L, 2025L, 2025L, 2025L, 2025L, 2025L, 2025L, 2025L, 2025L), LNDLB = c(12, 18, 546, 469, 337, 17, 22, 13, 17), LIVLB = c(14, 21, 639, 549, 394, 20, 26, 15, 20), VALUE = c(36, 90, 1605, 1252, 1072, 21, 55, 42, 21), AREA = c("514", "515", "513", "513", "513", "514", "514", "514", "514"), ITIS_TSN = c("164712", "164712", "164712","164712", "164712", "164712", "164712", "164712", "164712")), row.names = c(NA, -9L), class = "data.frame")
+
+assigned_data <- assign_fy(data = example_data,
+col = DATE_TRIP,
+species_data = nefmc_species)
+
+}
